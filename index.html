@@ -3,75 +3,257 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Vincent-Daniel Yun's professional portfolio and projects.">
+    <meta
+      name="description"
+      content="Vincent-Daniel Yun's responsive professional portfolio and game showcase."
+    >
     <title>Vincent-Daniel Yun</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="app.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
       <div class="brand">
-        <span class="brand-mark">VD</span>
-        <div>
+        <span class="brand-mark" aria-hidden="true">VD</span>
+        <div class="brand-copy">
           <p class="eyebrow">Graduate Research Assistant</p>
           <h1>Vincent-Daniel Yun</h1>
         </div>
       </div>
+
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
         Menu
       </button>
+
       <nav id="primary-nav" class="site-nav" aria-label="Primary">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
         <a href="#games">Games</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero section">
-        <p class="eyebrow">University of Southern California</p>
-        <h2>Responsive professional site scaffold</h2>
-        <p>
-          A static, mobile-first personal website shell with room for CV content, a Games menu,
-          and the snake game planned for later loops.
-        </p>
+      <section id="home" class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">University of Southern California</p>
+          <h2>Responsive portfolio with a built-in snake game.</h2>
+          <p class="lead">
+            Static HTML, CSS, and JavaScript only. The structure is ready for profile content,
+            research highlights, and a game section that will grow in later loops.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#games">Go to Games</a>
+            <a class="button button-secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside card">
+          <p class="meta-label">Current Focus</p>
+          <ul class="meta-list">
+            <li>LLM, quantization, efficient ML</li>
+            <li>Optimization and agentic AI</li>
+            <li>Responsive static site architecture</li>
+          </ul>
+        </aside>
       </section>
 
       <section id="about" class="section card">
-        <h2>About</h2>
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Profile snapshot</h2>
+        </div>
         <p>
-          Large language models, quantization, efficient ML, optimization, and large-scale
-          agentic systems.
+          Vincent-Daniel Yun is a USC Graduate Research Assistant working in artificial intelligence
+          and efficient machine learning. The site is designed to present a clear, mobile-friendly
+          summary of his work without introducing any backend services.
         </p>
       </section>
 
-      <section id="experience" class="section card">
-        <h2>Experience</h2>
-        <p>Profile content will be filled from CV.pdf in a later loop.</p>
-      </section>
-
-      <section id="publications" class="section card">
-        <h2>Publications</h2>
-        <p>Publication highlights will be added after the scaffold is stable.</p>
-      </section>
-
-      <section id="games" class="section card games-preview">
-        <div>
-          <p class="eyebrow">Games</p>
-          <h2>Snake game area</h2>
+      <section id="projects" class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected work</h2>
         </div>
-        <p>
-          This section is reserved for the keyboard and touch snake game. The gameplay will be
-          implemented in a later loop.
+        <div class="grid two-up">
+          <article class="mini-card">
+            <h3>Portfolio site</h3>
+            <p>
+              A static personal website with responsive navigation and room for CV-driven content.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Snake game</h3>
+            <p>
+              The Games section will host the keyboard and touch snake game in the next loop.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Research showcase</h3>
+            <p>
+              Publications, awards, and research themes are surfaced from CV.pdf.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>[사람 확인 필요]</h3>
+            <p>
+              Project titles and links beyond the CV are not invented here.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Experience</p>
+          <h2>Research and teaching</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3>University of Southern California</h3>
+            <p class="timeline-meta">Graduate Research Assistant</p>
+            <p>
+              Efficient hierarchical confidence-aware reasoning for routing LLM inference by
+              question difficulty.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <h3>Inha University</h3>
+            <p class="timeline-meta">External Researcher</p>
+            <p>
+              Pruning-robust training regularizers for high-sparsity and low-rank settings.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <h3>Stony Brook University</h3>
+            <p class="timeline-meta">Undergraduate Research Assistant</p>
+            <p>
+              Biomedical informatics and computer vision research, including tumor patch
+              consistency ranking and solar coronal hole analysis.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <h3>Republic of Korea Air Force</h3>
+            <p class="timeline-meta">Researcher (Sergeant)</p>
+            <p>
+              Computer vision pipeline work for solar coronal hole detection and analysis.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="section card">
+        <div class="section-heading">
+          <p class="eyebrow">Research</p>
+          <h2>Interests and highlights</h2>
+        </div>
+        <div class="grid two-up">
+          <article class="mini-card">
+            <h3>Focus areas</h3>
+            <ul class="list">
+              <li>Large language models</li>
+              <li>Quantization</li>
+              <li>Efficient ML</li>
+              <li>Optimization</li>
+              <li>Efficient agentic AI</li>
+              <li>Large-scale optimization</li>
+            </ul>
+          </article>
+          <article class="mini-card">
+            <h3>Selected publications</h3>
+            <ul class="list">
+              <li>Sharpness-Aware Minimization with Z-Score Gradient Filtering for Neural Networks</li>
+              <li>Revisiting 16-bit Neural Network Training: A Practical Approach for Resource-Limited Learning</li>
+              <li>Robust Neural Pruning with Gradient Sampling Optimization for Residual Neural Networks</li>
+              <li>Analysis and Predictive Modeling of Solar Coronal Holes Using Computer Vision and ARIMA-LSTM Networks</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="games" class="section card games-section" aria-labelledby="games-title">
+        <div class="section-heading">
+          <p class="eyebrow">Games</p>
+          <h2 id="games-title">Snake Game</h2>
+          <p>
+            The game shell is prepared here. The next loop will add the full snake logic,
+            controls, scoring, pause, restart, and enemy behavior.
+          </p>
+        </div>
+
+        <div class="game-shell">
+          <div class="game-panel">
+            <div class="score-row">
+              <div>
+                <span class="meta-label">Score</span>
+                <strong id="score-value">0</strong>
+              </div>
+              <div>
+                <span class="meta-label">Best</span>
+                <strong id="best-value">0</strong>
+              </div>
+              <div>
+                <span class="meta-label">Status</span>
+                <strong id="game-status">Ready</strong>
+              </div>
+            </div>
+
+            <div class="game-board">
+              <canvas id="game-canvas" width="480" height="480" aria-label="Snake game board"></canvas>
+              <div id="game-overlay" class="game-overlay is-visible" aria-live="polite">
+                <h3>Ready to play</h3>
+                <p>Press Start or use the keyboard / mobile controls.</p>
+              </div>
+            </div>
+
+            <div class="game-actions">
+              <button class="button button-primary" type="button" data-action="start">Start</button>
+              <button class="button button-secondary" type="button" data-action="pause">Pause</button>
+              <button class="button button-secondary" type="button" data-action="restart">Restart</button>
+            </div>
+          </div>
+
+          <div class="control-stack" aria-label="Mobile controls">
+            <button class="control control-up" type="button" data-direction="up">Up</button>
+            <div class="control-middle">
+              <button class="control control-left" type="button" data-direction="left">Left</button>
+              <button class="control control-pause" type="button" data-action="pause">Pause</button>
+              <button class="control control-right" type="button" data-direction="right">Right</button>
+            </div>
+            <button class="control control-down" type="button" data-direction="down">Down</button>
+          </div>
+        </div>
+
+        <p class="game-note">
+          Keyboard: arrow keys or WASD. Mobile: on-screen buttons. [사람 확인 필요] for enemy
+          pacing and visual effects.
         </p>
       </section>
 
       <section id="contact" class="section card contact-card">
-        <h2>Contact</h2>
-        <p>Contact details will be finalized with the profile content loop.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Get in touch</h2>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <span class="meta-label">Email</span>
+            <p>juyoung.yun@usc.edu</p>
+          </div>
+          <div>
+            <span class="meta-label">Web</span>
+            <p>worldwidedaniel.com</p>
+          </div>
+          <div>
+            <span class="meta-label">Phone</span>
+            <p>[사람 확인 필요]</p>
+          </div>
+        </div>
       </section>
     </main>
   </body>
