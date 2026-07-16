@@ -10,12 +10,13 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
+    <script defer src="./game.js"></script>
   </head>
   <body>
-    <div class="matrix-background" aria-hidden="true"></div>
+    <canvas class="matrix-rain" aria-hidden="true"></canvas>
 
     <header class="site-header">
-      <a class="brand" href="#top">다니엘의 웹사이트</a>
+      <a class="brand" href="#home">다니엘의 웹사이트</a>
       <button
         class="nav-toggle"
         type="button"
@@ -26,63 +27,157 @@
         Menu
       </button>
       <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
         <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero">
+    <main>
+      <section id="home" class="hero">
         <p class="eyebrow">Graduate Research Assistant · USC</p>
         <h1>연구와 구현 사이를 연결하는 정적 프로페셔널 웹사이트</h1>
         <p class="lede">
           Large Language Model, Quantization, Efficient ML, Optimization,
           Efficient Agentic AI를 중심으로 연구하고 있습니다.
         </p>
+        <div class="hero-meta">
+          <span>Research-driven</span>
+          <span>Responsive</span>
+          <span>Matrix-inspired</span>
+        </div>
       </section>
 
       <section id="about" class="panel">
-        <h2>About</h2>
-        <p>
-          Vincent-Daniel Yun의 CV를 바탕으로, 연구 주제와 학력, 경력, 수상
-          이력을 중심으로 정리한 소개 영역입니다.
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>연구자 프로필</h2>
+        </div>
+        <div class="content-grid two-up">
+          <p>
+            Vincent-Daniel Yun의 CV를 바탕으로, 연구 주제와 학력, 경력, 수상
+            이력을 중심으로 정리한 소개 영역입니다.
+          </p>
+          <ul class="bullet-list compact">
+            <li>USC M.S. in Artificial Intelligence (Computer Science)</li>
+            <li>Stony Brook University B.S. in Computer Science & Applied Mathematics</li>
+            <li>Research focus: LLM, quantization, efficient ML, optimization</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="education" class="panel">
-        <h2>Education</h2>
-        <ul class="card-list">
-          <li>University of Southern California, M.S. in Artificial Intelligence (Computer Science)</li>
-          <li>State University of New York at Stony Brook, B.S. in Computer Science & Applied Mathematics</li>
-          <li>Seoul National University, Visiting Scholar [사람 확인 필요]</li>
-        </ul>
+      <section id="projects" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2>확인 가능한 연구 주제</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Hierarchical reasoning</h3>
+            <p>토큰 단위 확률 통계를 활용한 confidence-aware reasoning.</p>
+          </article>
+          <article class="info-card">
+            <h3>Pruning robustness</h3>
+            <p>고희소 pruning 상황에서의 regularizer와 안정성 분석.</p>
+          </article>
+          <article class="info-card">
+            <h3>Efficient optimization</h3>
+            <p>저정밀 학습과 sharpness-aware minimization의 안정성 연구.</p>
+          </article>
+          <article class="info-card">
+            <h3>Applied CV</h3>
+            <p>태양 코로나 홀과 의료 영상 예측 파이프라인의 실험적 적용.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Experience</p>
+          <h2>연구 및 교육 경험</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <h3>University of Southern California</h3>
+            <p>Graduate Research Assistant, 현재 진행 중.</p>
+          </article>
+          <article>
+            <h3>Inha University</h3>
+            <p>External Researcher, Large-Scale Machine Learning Systems Lab.</p>
+          </article>
+          <article>
+            <h3>Stony Brook University</h3>
+            <p>Biomedical Informatics Center와 Data and Intelligent Computing Lab 연구 경험.</p>
+          </article>
+          <article>
+            <h3>Republic of Korea Air Force</h3>
+            <p>Space weather forecasting model analyst 경험.</p>
+          </article>
+        </div>
       </section>
 
       <section id="research" class="panel">
-        <h2>Research</h2>
-        <ul class="card-list">
-          <li>Efficient hierarchical confidence-aware reasoning</li>
-          <li>Pruning-robust training regularizers</li>
-          <li>Uncertainty-aware tumor prediction</li>
-          <li>Low-precision training analysis</li>
-          <li>Solar coronal hole detection pipeline</li>
+        <div class="section-heading">
+          <p class="eyebrow">Research</p>
+          <h2>핵심 연구 키워드</h2>
+        </div>
+        <ul class="bullet-list">
+          <li>Large Language Model</li>
+          <li>Quantization</li>
+          <li>Efficient ML</li>
+          <li>Optimization</li>
+          <li>Efficient Agentic AI</li>
+          <li>Large-scale Optimization</li>
         </ul>
       </section>
 
-      <section id="publications" class="panel">
-        <h2>Publications</h2>
-        <p>대표 논문 목록은 다음 루프에서 정리합니다.</p>
+      <section id="games" class="panel games-panel">
+        <div class="section-heading">
+          <p class="eyebrow">Games</p>
+          <h2>게임 준비 영역</h2>
+        </div>
+        <p>
+          지렁이 게임은 방향키, WASD, 모바일 버튼으로 조작할 수 있습니다.
+        </p>
+        <div class="game-shell" aria-label="지렁이 게임">
+          <div class="game-toolbar">
+            <div>
+              <strong>Snake</strong>
+              <p>Start, pause, restart, high score support</p>
+            </div>
+            <div class="game-stats" aria-live="polite">
+              <span>Score: <strong id="score">0</strong></span>
+              <span>Best: <strong id="best-score">0</strong></span>
+              <span id="game-status">Ready</span>
+            </div>
+          </div>
+          <canvas id="snake-canvas" width="640" height="480" aria-label="Snake board"></canvas>
+          <div class="game-actions">
+            <button type="button" class="game-button" data-action="start">Start</button>
+            <button type="button" class="game-button" data-action="pause">Pause</button>
+            <button type="button" class="game-button" data-action="restart">Restart</button>
+          </div>
+          <div class="dpad" aria-label="모바일 조작">
+            <span></span>
+            <button type="button" class="dpad-button" data-direction="up" aria-label="Up">▲</button>
+            <span></span>
+            <button type="button" class="dpad-button" data-direction="left" aria-label="Left">◀</button>
+            <button type="button" class="dpad-button" data-direction="down" aria-label="Down">▼</button>
+            <button type="button" class="dpad-button" data-direction="right" aria-label="Right">▶</button>
+          </div>
+        </div>
       </section>
 
-      <section id="games" class="panel games-panel">
-        <h2>Games</h2>
-        <p>지렁이 게임은 다음 개발 루프에서 추가합니다.</p>
-        <div class="game-stage" aria-label="게임 준비 영역">
-          <span>Game Area</span>
+      <section id="contact" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>연락처</h2>
         </div>
+        <p>연락처는 공개하지 않습니다.</p>
       </section>
     </main>
   </body>

@@ -32,16 +32,13 @@ a {
   text-decoration: none;
 }
 
-.matrix-background {
+.matrix-rain {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(88, 255, 134, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(88, 255, 134, 0.12) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: linear-gradient(180deg, black, transparent 85%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
 }
 
 .site-header,
@@ -113,6 +110,21 @@ main {
   margin-bottom: 1.25rem;
 }
 
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-meta span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  color: var(--muted);
+  background: rgba(88, 255, 134, 0.04);
+}
+
 .eyebrow {
   margin: 0 0 1rem;
   color: var(--accent);
@@ -146,6 +158,69 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.two-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.two-up > *,
+.card-grid > * {
+  min-width: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.info-card,
+.timeline article {
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(88, 255, 134, 0.15);
+  background: rgba(1, 8, 4, 0.38);
+}
+
+.info-card h3,
+.timeline h3 {
+  margin-bottom: 0.5rem;
+}
+
+.info-card p,
+.timeline p,
+.panel p {
+  color: var(--muted);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.timeline {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.bullet-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+
+.bullet-list.compact {
+  gap: 0.5rem;
+}
+
 .card-list {
   margin: 0;
   padding-left: 1.1rem;
@@ -158,19 +233,108 @@ h1 {
   min-height: 320px;
 }
 
-.game-stage {
+.game-shell {
   display: grid;
-  place-items: center;
-  min-height: 220px;
+  gap: 1rem;
+  padding: 1rem;
   margin-top: 1rem;
-  border-radius: 18px;
-  border: 1px dashed rgba(88, 255, 134, 0.28);
+  border-radius: 20px;
+  border: 1px solid rgba(88, 255, 134, 0.18);
   background:
-    linear-gradient(180deg, rgba(88, 255, 134, 0.05), rgba(0, 0, 0, 0.22)),
+    linear-gradient(180deg, rgba(88, 255, 134, 0.04), rgba(0, 0, 0, 0.22)),
     rgba(2, 8, 5, 0.6);
+}
+
+.game-toolbar {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.game-toolbar p {
+  margin-bottom: 0;
+}
+
+.game-stats {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+.game-stats span,
+.game-button,
+.dpad-button {
+  border-radius: 999px;
+  border: 1px solid rgba(88, 255, 134, 0.2);
+  background: rgba(2, 10, 6, 0.75);
+  color: var(--text);
+}
+
+.game-stats span {
+  padding: 0.45rem 0.75rem;
+}
+
+.game-shell canvas {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  border: 1px solid rgba(88, 255, 134, 0.2);
+  background: radial-gradient(circle at center, rgba(88, 255, 134, 0.06), rgba(0, 0, 0, 0.65));
+  display: block;
+}
+
+.game-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.game-button,
+.dpad-button {
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+}
+
+.game-button:hover,
+.game-button:focus-visible,
+.dpad-button:hover,
+.dpad-button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(88, 255, 134, 0.12);
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(2.75rem, 1fr));
+  gap: 0.5rem;
+  max-width: 15rem;
+}
+
+.dpad span {
+  min-height: 44px;
+}
+
+.dpad-button {
+  width: 100%;
+  font-size: 1rem;
+}
+
+#game-status {
   color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
+}
+
+#score,
+#best-score {
+  color: var(--accent);
+}
+
+.game-over {
+  color: #ffd0d0;
 }
 
 @media (max-width: 768px) {
@@ -198,5 +362,29 @@ h1 {
 
   .site-nav a {
     width: 100%;
+  }
+
+  .two-up,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.4rem;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 12vw, 2.8rem);
+    line-height: 1.02;
+  }
+
+  .lede {
+    font-size: 0.98rem;
+  }
+
+  .panel {
+    padding: 1.15rem;
   }
 }
