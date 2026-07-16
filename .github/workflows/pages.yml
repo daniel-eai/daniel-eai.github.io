@@ -32,7 +32,7 @@ jobs:
         run: |
           rm -rf deploy
           mkdir -p deploy
-          cp index.html style.css app.js deploy/
+          cp index.html styles.css script.js deploy/
           if [ -f game.js ]; then cp game.js deploy/; fi
           if [ -d assets ]; then cp -R assets deploy/; fi
 
