@@ -114,7 +114,7 @@ h2 { max-width: 12ch; margin-bottom: 0; font-size: clamp(2.3rem, 5vw, 4.5rem); l
 .game-toolbar > div { display: grid; gap: 0.25rem; }
 .game-toolbar strong { font-size: 1.2rem; }
 .game-status { color: var(--amber); font-size: 0.75rem; }
-#game-canvas { display: block; width: 100%; height: auto; margin: 1rem 0; border: 1px solid rgba(114, 255, 180, 0.18); background: #06120b; image-rendering: pixelated; }
+#game-canvas, #tetris-canvas { display: block; width: 100%; height: auto; margin: 1rem 0; border: 1px solid rgba(114, 255, 180, 0.18); background: #06120b; image-rendering: pixelated; }
 .game-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .game-actions .button { min-height: 2.4rem; padding: 0.5rem 0.7rem; }
 .game-actions button:disabled { cursor: not-allowed; opacity: 0.45; }

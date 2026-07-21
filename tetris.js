@@ -12,7 +12,7 @@
   const touchButtons = document.querySelectorAll('[data-tetris-direction]');
   const columns = 10;
   const rows = 20;
-  const cellSize = canvas.width / columns;
+  const cellSize = canvas.height / rows;
   const highScoreKey = 'daniel-eai-tetris-high-score';
   const shapes = [
     { cells: [[1, 1, 1, 1]], color: '#72ffb4' },
