@@ -17,13 +17,14 @@
   const enemyMoveRate = 280;
   const enemyCycle = 4000;
   const enemyRespawnDelay = 1000;
+  const enemyCount = 4;
   const highScoreKey = 'daniel-eai-worm-high-score';
 
   let snake;
   let food;
   let direction;
   let nextDirection;
-  let enemy;
+  let enemies;
   let mode = 'ready';
   let score = 0;
   let highScore = Number.parseInt(localStorage.getItem(highScoreKey) || '0', 10);
@@ -32,30 +33,30 @@
   let lastEnemyMove = 0;
   let enemyCycleStarted = 0;
   let enemyRespawnAt = 0;
+  let pausedAt = 0;
 
   const equals = (a, b) => a.x === b.x && a.y === b.y;
   const randomCell = () => ({ x: Math.floor(Math.random() * columns), y: Math.floor(Math.random() * rows) });
-
-  const isBlocked = (cell) => snake.some((segment) => equals(segment, cell)) || (enemy && enemy.active && equals(enemy, cell));
+  const isBlocked = (cell) => snake.some((segment) => equals(segment, cell)) || enemies.some((enemy) => enemy.active && equals(enemy, cell));
 
   const spawnFood = () => {
     let next = randomCell();
     let attempts = 0;
-    while (isBlocked(next) && attempts < 500) {
-      next = randomCell();
-      attempts += 1;
-    }
+    while (isBlocked(next) && attempts < 500) { next = randomCell(); attempts += 1; }
     return next;
   };
 
-  const spawnEnemy = () => {
-    let next = randomCell();
-    let attempts = 0;
-    while (snake.some((segment) => equals(segment, next)) && attempts < 500) {
-      next = randomCell();
-      attempts += 1;
+  const spawnEnemies = () => {
+    const occupied = [...snake];
+    const nextEnemies = [];
+    for (let index = 0; index < enemyCount; index += 1) {
+      let next = randomCell();
+      let attempts = 0;
+      while (occupied.some((cell) => equals(cell, next)) && attempts < 500) { next = randomCell(); attempts += 1; }
+      nextEnemies.push({ ...next, active: true, exploding: false });
+      occupied.push(next);
     }
-    return { ...next, active: true, exploding: false };
+    return nextEnemies;
   };
 
   const resetState = () => {
@@ -63,10 +64,11 @@
     direction = { x: 1, y: 0 };
     nextDirection = { x: 1, y: 0 };
     score = 0;
-    enemy = spawnEnemy();
+    enemies = spawnEnemies();
     food = spawnFood();
     enemyCycleStarted = performance.now();
     enemyRespawnAt = 0;
+    pausedAt = 0;
     updateHud();
     draw();
   };
@@ -76,7 +78,7 @@
     highScoreElement.textContent = String(highScore);
     statusElement.textContent = mode === 'running' ? 'Running' : mode === 'paused' ? 'Paused' : mode === 'gameover' ? 'Game over' : 'Ready';
     startButton.disabled = mode === 'running';
-    pauseButton.disabled = mode !== 'running';
+    pauseButton.disabled = mode !== 'running' && mode !== 'paused';
     pauseButton.textContent = mode === 'paused' ? 'Resume' : 'Pause';
   };
 
@@ -87,22 +89,21 @@
     nextDirection = candidate;
   };
 
-  const explodeEnemy = (now) => {
-    if (!enemy.active || enemy.exploding) return;
-    enemy.exploding = true;
-    enemy.active = false;
+  const explodeEnemies = (now) => {
+    if (enemyRespawnAt || enemies.every((enemy) => enemy.exploding)) return;
+    enemies.forEach((enemy) => { enemy.exploding = true; enemy.active = false; });
     enemyRespawnAt = now + enemyRespawnDelay;
   };
 
-  const moveEnemy = () => {
-    if (!enemy.active || enemy.exploding) return;
-    const candidates = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 1 }, { x: 0, y: -1 }].filter((candidate) => {
-      const next = { x: enemy.x + candidate.x, y: enemy.y + candidate.y };
-      return next.x >= 0 && next.x < columns && next.y >= 0 && next.y < rows;
+  const moveEnemies = () => {
+    enemies.forEach((enemy, enemyIndex) => {
+      if (!enemy.active || enemy.exploding) return;
+      const candidates = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 1 }, { x: 0, y: -1 }].filter((candidate) => {
+        const next = { x: enemy.x + candidate.x, y: enemy.y + candidate.y };
+        return next.x >= 0 && next.x < columns && next.y >= 0 && next.y < rows && !snake.some((segment) => equals(segment, next)) && !enemies.some((other, index) => index !== enemyIndex && other.active && equals(other, next));
+      });
+      if (candidates.length) { const move = candidates[Math.floor(Math.random() * candidates.length)]; enemy.x += move.x; enemy.y += move.y; }
     });
-    const move = candidates[Math.floor(Math.random() * candidates.length)];
-    enemy.x += move.x;
-    enemy.y += move.y;
   };
 
   const step = (now) => {
@@ -110,92 +111,70 @@
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
     const hitWall = head.x < 0 || head.x >= columns || head.y < 0 || head.y >= rows;
     const hitSelf = snake.some((segment) => equals(segment, head));
-    const hitEnemy = enemy.active && equals(enemy, head);
-    if (hitWall || hitSelf || hitEnemy) {
-      endGame();
-      return;
-    }
+    const hitEnemy = enemies.some((enemy) => enemy.active && equals(enemy, head));
+    if (hitWall || hitSelf || hitEnemy) { endGame(); return; }
     snake.unshift(head);
     if (equals(head, food)) {
       score += 10;
-      if (score > highScore) {
-        highScore = score;
-        localStorage.setItem(highScoreKey, String(highScore));
-      }
+      if (score > highScore) { highScore = score; localStorage.setItem(highScoreKey, String(highScore)); }
       food = spawnFood();
-    } else {
-      snake.pop();
-    }
+    } else snake.pop();
     updateHud();
   };
 
-  const endGame = () => {
-    mode = 'gameover';
-    updateHud();
-    draw();
-  };
+  const endGame = () => { mode = 'gameover'; window.__activeGame = null; updateHud(); draw(); };
 
-  const drawCell = (cell, color, inset = 2) => {
-    context.fillStyle = color;
-    context.fillRect(cell.x * cellSize + inset, cell.y * cellSize + inset, cellSize - inset * 2, cellSize - inset * 2);
-  };
+  const drawCell = (cell, color, inset = 2) => { context.fillStyle = color; context.fillRect(cell.x * cellSize + inset, cell.y * cellSize + inset, cellSize - inset * 2, cellSize - inset * 2); };
 
   const draw = () => {
-    context.fillStyle = '#06120b';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.strokeStyle = 'rgba(114, 255, 180, 0.08)';
-    context.lineWidth = 1;
+    context.fillStyle = '#06120b'; context.fillRect(0, 0, canvas.width, canvas.height);
+    context.strokeStyle = 'rgba(114, 255, 180, 0.08)'; context.lineWidth = 1;
     for (let x = 0; x <= columns; x += 1) { context.beginPath(); context.moveTo(x * cellSize, 0); context.lineTo(x * cellSize, canvas.height); context.stroke(); }
     for (let y = 0; y <= rows; y += 1) { context.beginPath(); context.moveTo(0, y * cellSize); context.lineTo(canvas.width, y * cellSize); context.stroke(); }
     drawCell(food, '#ffd58a', 4);
     snake.forEach((segment, index) => drawCell(segment, index === 0 ? '#b2ffd1' : '#42cf87', 2));
-    if (enemy.exploding) {
-      context.strokeStyle = '#ff826c';
-      context.lineWidth = 3;
-      context.beginPath();
-      context.arc((enemy.x + 0.5) * cellSize, (enemy.y + 0.5) * cellSize, cellSize * 0.7, 0, Math.PI * 2);
-      context.stroke();
-    } else if (enemy.active) {
-      drawCell(enemy, '#ff826c', 3);
-      context.fillStyle = '#06120b';
-      context.fillRect(enemy.x * cellSize + cellSize * 0.3, enemy.y * cellSize + cellSize * 0.3, cellSize * 0.14, cellSize * 0.14);
-    }
-    if (mode === 'ready' || mode === 'paused' || mode === 'gameover') {
-      context.fillStyle = 'rgba(6, 18, 11, 0.72)';
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.fillStyle = mode === 'gameover' ? '#ff826c' : '#b2ffd1';
-      context.font = '700 18px sans-serif';
-      context.textAlign = 'center';
-      context.fillText(mode === 'gameover' ? 'GAME OVER' : mode === 'paused' ? 'PAUSED' : 'PRESS START', canvas.width / 2, canvas.height / 2);
-    }
+    enemies.forEach((enemy) => {
+      if (enemy.exploding) { context.strokeStyle = '#ff826c'; context.lineWidth = 3; context.beginPath(); context.arc((enemy.x + 0.5) * cellSize, (enemy.y + 0.5) * cellSize, cellSize * 0.7, 0, Math.PI * 2); context.stroke(); }
+      else if (enemy.active) { drawCell(enemy, '#ff826c', 3); context.fillStyle = '#06120b'; context.fillRect(enemy.x * cellSize + cellSize * 0.3, enemy.y * cellSize + cellSize * 0.3, cellSize * 0.14, cellSize * 0.14); }
+    });
+    if (mode === 'ready' || mode === 'paused' || mode === 'gameover') { context.fillStyle = 'rgba(6, 18, 11, 0.72)'; context.fillRect(0, 0, canvas.width, canvas.height); context.fillStyle = mode === 'gameover' ? '#ff826c' : '#b2ffd1'; context.font = '700 18px sans-serif'; context.textAlign = 'center'; context.fillText(mode === 'gameover' ? 'GAME OVER' : mode === 'paused' ? 'PAUSED' : 'PRESS START', canvas.width / 2, canvas.height / 2); }
   };
 
   const loop = (now) => {
     if (mode === 'running') {
       if (now - lastTick >= tickRate) { lastTick = now; step(now); }
-      if (now - lastEnemyMove >= enemyMoveRate) { lastEnemyMove = now; moveEnemy(); }
-      if (now - enemyCycleStarted >= enemyCycle) { enemyCycleStarted = now; explodeEnemy(now); }
-      if (enemyRespawnAt && now >= enemyRespawnAt) { enemy = spawnEnemy(); enemyRespawnAt = 0; enemyCycleStarted = now; }
+      if (now - lastEnemyMove >= enemyMoveRate) { lastEnemyMove = now; moveEnemies(); }
+      if (now - enemyCycleStarted >= enemyCycle && !enemyRespawnAt) explodeEnemies(now);
+      if (enemyRespawnAt && now >= enemyRespawnAt) { enemies = spawnEnemies(); enemyRespawnAt = 0; enemyCycleStarted = now; }
       draw();
     }
     animationFrame = requestAnimationFrame(loop);
   };
 
-  const start = () => { if (mode === 'gameover') resetState(); mode = 'running'; lastTick = performance.now(); updateHud(); };
-  const togglePause = () => { if (mode === 'running') mode = 'paused'; else if (mode === 'paused') { mode = 'running'; lastTick = performance.now(); } updateHud(); draw(); };
-  const restart = () => { resetState(); mode = 'ready'; updateHud(); };
+  const start = () => { if (mode === 'gameover') resetState(); mode = 'running'; window.__activeGame = 'worm'; lastTick = performance.now(); updateHud(); };
+  const togglePause = () => {
+    if (mode === 'running') { mode = 'paused'; pausedAt = performance.now(); }
+    else if (mode === 'paused') { const shift = performance.now() - pausedAt; enemyCycleStarted += shift; if (enemyRespawnAt) enemyRespawnAt += shift; mode = 'running'; lastTick = performance.now(); }
+    updateHud(); draw();
+  };
+  const restart = () => { resetState(); mode = 'ready'; window.__activeGame = null; updateHud(); };
 
   document.addEventListener('keydown', (event) => {
-    const keys = { ArrowUp: 'up', w: 'up', W: 'up', ArrowDown: 'down', s: 'down', S: 'down', ArrowLeft: 'left', a: 'left', A: 'left', ArrowRight: 'right', d: 'right', D: 'right' };
-    if (keys[event.key]) { event.preventDefault(); setDirection(keys[event.key]); if (mode === 'ready') start(); }
-    if (event.key === ' ' && (mode === 'running' || mode === 'paused')) { event.preventDefault(); togglePause(); }
+    if (window.__activeGame === 'tetris') return;
+    const key = (event.key || '').toLowerCase();
+    const code = (event.code || '').toLowerCase();
+    const keys = { arrowup: 'up', w: 'up', keyw: 'up', arrowdown: 'down', s: 'down', keys: 'down', arrowleft: 'left', a: 'left', keya: 'left', arrowright: 'right', d: 'right', keyd: 'right' };
+    const move = keys[key] || keys[code];
+    if (move) { event.preventDefault(); setDirection(move); if (mode === 'ready') start(); }
+    if ((key === ' ' || code === 'space') && (mode === 'running' || mode === 'paused')) { event.preventDefault(); togglePause(); }
   });
-  touchButtons.forEach((button) => button.addEventListener('click', () => { setDirection(button.dataset.direction); if (mode === 'ready') start(); }));
+  touchButtons.forEach((button) => button.addEventListener('click', () => { window.__activeGame = 'worm'; setDirection(button.dataset.direction); if (mode === 'ready') start(); }));
   startButton.addEventListener('click', start);
   pauseButton.addEventListener('click', togglePause);
   restartButton.addEventListener('click', restart);
   window.addEventListener('pagehide', () => cancelAnimationFrame(animationFrame), { once: true });
 
+  window.__activeGame = null;
   resetState();
   updateHud();
   requestAnimationFrame(loop);

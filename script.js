@@ -19,7 +19,7 @@ if (menuToggle && siteNav) {
 
 if (matrixCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const context = matrixCanvas.getContext('2d');
-  const glyphs = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>[]{}';
+  const glyphs = ['별 헤는 밤', '별 헤는 밤', '별 헤는 밤'];
   let columns = [];
   let fontSize = 14;
   let animationFrame;
