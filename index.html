@@ -1,1 +1,45 @@
-helloworld
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A responsive personal profile and research space.">
+    <title>Daniel</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="#home">Daniel</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#games">Games</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="intro" aria-labelledby="intro-title">
+        <p class="eyebrow">Personal research space</p>
+        <h1 id="intro-title">helloworld</h1>
+        <p>A responsive profile site is taking shape.</p>
+      </section>
+
+      <section id="research" class="section" aria-labelledby="research-title">
+        <p class="eyebrow">Research</p>
+        <h2 id="research-title">Research and projects</h2>
+        <p>Profile content will be added from the approved materials in a later loop.</p>
+      </section>
+
+      <section id="games" class="section game-placeholder" aria-labelledby="games-title">
+        <p class="eyebrow">Games</p>
+        <h2 id="games-title">Games</h2>
+        <p>The worm game will be added in a later development loop.</p>
+      </section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
