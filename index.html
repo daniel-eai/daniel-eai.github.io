@@ -3,43 +3,190 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A responsive personal profile and research space.">
-    <title>Daniel</title>
+    <meta name="theme-color" content="#06100b">
+    <meta name="description" content="Vincent-Daniel Yun researches efficient machine learning, LLM compression, and optimization.">
+    <title>Vincent-Daniel Yun | Efficient Intelligence</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="matrix-fade" aria-hidden="true"></div>
+
     <header class="site-header">
-      <a class="site-name" href="#home">Daniel</a>
+      <a class="brand" href="#home" aria-label="Vincent-Daniel Yun home">
+        <span class="brand-mark">VDY</span>
+        <span class="brand-copy">Vincent-Daniel Yun</span>
+      </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        Menu
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="sr-only">Open menu</span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="#home">Home</a>
+        <a href="#about">About</a>
         <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main id="home">
-      <section class="intro" aria-labelledby="intro-title">
-        <p class="eyebrow">Personal research space</p>
-        <h1 id="intro-title">helloworld</h1>
-        <p>A responsive profile site is taking shape.</p>
+    <main id="main-content">
+      <section id="home" class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker"><span class="pulse-dot"></span> Efficient intelligence / Los Angeles + Seoul</p>
+          <h1 id="hero-title">Making learning systems lighter, faster, and more capable.</h1>
+          <p class="hero-lede">Vincent-Daniel Yun is a researcher working across efficient machine learning, large language model compression, optimization, and robust agentic AI.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#research">Explore research <span aria-hidden="true">&#8595;</span></a>
+            <a class="button button-quiet" href="https://scholar.google.com/citations?user=mlfYKfgAAAAJ" target="_blank" rel="noreferrer">Google Scholar <span aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="hero-aside" aria-label="Current affiliation">
+          <div class="signal-card">
+            <span class="card-label">Current signal</span>
+            <strong>Seoul National University</strong>
+            <span>Visiting scholar / KV-cache quantization</span>
+          </div>
+          <div class="hero-index" aria-hidden="true"><span>01</span><i></i><span>08</span></div>
+        </div>
       </section>
 
-      <section id="research" class="section" aria-labelledby="research-title">
-        <p class="eyebrow">Research</p>
-        <h2 id="research-title">Research and projects</h2>
-        <p>Profile content will be added from the approved materials in a later loop.</p>
+      <section id="about" class="section-shell content-section" aria-labelledby="about-title">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <h2 id="about-title">About</h2>
+        </div>
+        <div class="about-grid">
+          <p class="section-intro">Modern neural networks are powerful, but their scale can hide substantial computational and memory cost. My work asks how we can turn that redundancy into systems that are structurally and computationally optimal.</p>
+          <div class="about-detail">
+            <p>I am an M.S. in Artificial Intelligence student at the University of Southern California, supervised by Prof. Sai Praneeth Karimireddy and Prof. Vatsal Sharan. I also work with the Large-Scale Machine Learning Systems Lab at Inha University.</p>
+            <p>My research connects theory, optimization, and practical large-scale experiments to make models lighter, more robust, and more efficient to reason with.</p>
+          </div>
+        </div>
       </section>
 
-      <section id="games" class="section game-placeholder" aria-labelledby="games-title">
-        <p class="eyebrow">Games</p>
-        <h2 id="games-title">Games</h2>
-        <p>The worm game will be added in a later development loop.</p>
+      <section id="research" class="section-shell content-section" aria-labelledby="research-title">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <h2 id="research-title">Research</h2>
+        </div>
+        <div class="research-grid">
+          <article class="research-card featured-card">
+            <span class="card-index">01 / CURRENT</span>
+            <h3>LLM compression</h3>
+            <p>Depth pruning, layer redundancy, activation alignment, and KV-cache quantization for more efficient language models.</p>
+            <span class="research-tag">Pruning / Quantization</span>
+          </article>
+          <article class="research-card">
+            <span class="card-index">02</span>
+            <h3>Optimization</h3>
+            <p>Sharpness-aware methods, gradient normalization, and training dynamics for accurate learning under constrained precision.</p>
+            <span class="research-tag">Training dynamics</span>
+          </article>
+          <article class="research-card">
+            <span class="card-index">03</span>
+            <h3>Robust agents</h3>
+            <p>Efficient multi-agent systems that remain useful when coordination is noisy, adversarial, or uncertain.</p>
+            <span class="research-tag">Agentic AI</span>
+          </article>
+          <article class="research-card">
+            <span class="card-index">04</span>
+            <h3>Uncertainty</h3>
+            <p>Learning systems that express calibrated uncertainty instead of becoming confidently wrong on ambiguous data.</p>
+            <span class="research-tag">Generalization</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section-shell content-section" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <h2 id="projects-title">Selected projects</h2>
+        </div>
+        <div class="project-list">
+          <article class="project-row">
+            <span class="project-year">2026 / U-08</span>
+            <div><h3>Locality-Aware Redundancy Pruning for LLM Depth Compression</h3><p>Under review</p></div>
+            <span class="project-arrow" aria-hidden="true">&#8599;</span>
+          </article>
+          <article class="project-row">
+            <span class="project-year">2026 / U-07</span>
+            <div><h3>Ghosted Layers: Unconstrained Activation Alignment for Recovering Layer-Pruned LLMs</h3><p>Under review</p></div>
+            <span class="project-arrow" aria-hidden="true">&#8599;</span>
+          </article>
+          <article class="project-row">
+            <span class="project-year">2026 / U-05</span>
+            <div><h3>Robust Multi-Agent LLMs under Byzantine Faults</h3><p>Under review</p></div>
+            <span class="project-arrow" aria-hidden="true">&#8599;</span>
+          </article>
+          <article class="project-row">
+            <span class="project-year">2026 / U-06</span>
+            <div><h3>Weight Concentration Regularization for Improving Pruning Robustness Under High Sparsity</h3><p>Under review</p></div>
+            <span class="project-arrow" aria-hidden="true">&#8599;</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section-shell content-section" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <h2 id="experience-title">Experience</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-row"><span class="timeline-date">2026</span><div><h3>Seoul National University</h3><p>Visiting Scholar / Computing &amp; Memory Architecture Lab</p></div><span class="timeline-note">Seoul</span></article>
+          <article class="timeline-row"><span class="timeline-date">2025 - now</span><div><h3>University of Southern California</h3><p>Graduate Research Assistant / Artificial Intelligence</p></div><span class="timeline-note">Los Angeles</span></article>
+          <article class="timeline-row"><span class="timeline-date">2025 - now</span><div><h3>Inha University</h3><p>External Researcher / Large-Scale Machine Learning Systems Lab</p></div><span class="timeline-note">Remote</span></article>
+          <article class="timeline-row"><span class="timeline-date">2023 - 2025</span><div><h3>Stony Brook University</h3><p>Undergraduate Research Assistant / Biomedical Informatics Center</p></div><span class="timeline-note">New York</span></article>
+          <article class="timeline-row"><span class="timeline-date">2020 - 2022</span><div><h3>Republic of Korea Air Force</h3><p>Space weather forecasting model analyst</p></div><span class="timeline-note">Daejeon</span></article>
+        </div>
+      </section>
+
+      <section id="games" class="section-shell content-section game-section" aria-labelledby="games-title">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <h2 id="games-title">Games</h2>
+        </div>
+        <div class="game-layout">
+          <div class="game-copy">
+            <p class="kicker">A small break from large models</p>
+            <h3>Worm / signal runner</h3>
+            <p>Collect the signal, grow your worm, and stay clear of the moving fault. Use arrow keys, WASD, or the touch controls.</p>
+            <div class="game-rules"><span>Eat to grow</span><span>Enemy collision = game over</span><span>Best score saved locally</span></div>
+          </div>
+          <div class="game-panel" data-game="worm">
+            <div class="game-toolbar">
+              <div><span class="game-label">Score</span><strong id="score">0</strong></div>
+              <div><span class="game-label">Best</span><strong id="high-score">0</strong></div>
+              <div><span id="game-status" class="game-status">Ready</span></div>
+            </div>
+            <canvas id="game-canvas" width="480" height="320" aria-label="Worm game board"></canvas>
+            <div class="game-actions">
+              <button id="start-game" class="button button-primary" type="button">Start</button>
+              <button id="pause-game" class="button button-quiet" type="button" disabled>Pause</button>
+              <button id="restart-game" class="button button-quiet" type="button">Restart</button>
+            </div>
+            <div class="touch-controls" aria-label="Touch controls">
+              <button type="button" data-direction="up" aria-label="Move up">&#8593;</button>
+              <div><button type="button" data-direction="left" aria-label="Move left">&#8592;</button><button type="button" data-direction="down" aria-label="Move down">&#8595;</button><button type="button" data-direction="right" aria-label="Move right">&#8594;</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-shell content-section contact-section" aria-labelledby="contact-title">
+        <div class="section-heading"><span class="section-number">06</span><h2 id="contact-title">Contact</h2></div>
+        <div class="contact-grid">
+          <p class="section-intro">Interested in efficient learning systems, compression, optimization, or robust agents? Find the latest work through the links below.</p>
+          <div class="contact-links"><a href="https://scholar.google.com/citations?user=mlfYKfgAAAAJ" target="_blank" rel="noreferrer">Google Scholar <span>&#8599;</span></a><a href="https://www.worldwidedaniel.com" target="_blank" rel="noreferrer">WorldwideDaniel <span>&#8599;</span></a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn <span>&#8599;</span></a></div>
+        </div>
       </section>
     </main>
 
+    <footer class="site-footer section-shell"><span>Vincent-Daniel Yun</span><span>Efficient intelligence, carefully made.</span><a href="#home">Back to top &#8593;</a></footer>
+
     <script src="script.js" defer></script>
+    <script src="game.js" defer></script>
   </body>
 </html>
