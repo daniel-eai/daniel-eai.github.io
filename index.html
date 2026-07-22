@@ -23,7 +23,7 @@
     <section id="home" class="hero section-shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="kicker">Efficient AI · LLM Optimization · Research</p>
-        <h1 id="hero-title">더 가볍고,<br><em>빠르고 효율적인</em><br>인공지능을 연구합니다.</h1>
+        <h1 id="hero-title">더 가볍고, <em>빠르고 효율적인 인공지능을 연구합니다.</em></h1>
         <p class="hero-lede">Vincent-Daniel Yun은 USC 인공지능 석사과정 연구 조교로, 모델 압축과 최적화를 통해 학습과 추론의 새로운 효율을 탐구합니다.</p>
         <div class="hero-actions"><a class="button button-primary" href="#research">연구 살펴보기</a><a class="text-link" href="#games">게임 플레이 →</a></div>
       </div>
@@ -61,15 +61,15 @@
     <section id="experience" class="section-shell" aria-labelledby="experience-title">
       <div class="section-heading"><div><p class="kicker">Experience</p><h2 id="experience-title">걸어온 경로</h2></div></div>
       <div class="timeline">
-        <article><time>09.2025 – 현재</time><div><h3>University of Southern California</h3><p>Graduate Research Assistant · 효율적 LLM 추론과 confidence-aware reasoning framework 개발</p></div></article>
-        <article><time>07.2025 – 현재</time><div><h3>Inha University</h3><p>External Researcher · pruning-robust training regularizer와 대규모 PyTorch 실험</p></div></article>
-        <article><time>09.2023 – 05.2025</time><div><h3>Stony Brook University</h3><p>Undergraduate Research Assistant · unlabeled data를 활용한 tumor prediction uncertainty 연구</p></div></article>
-        <article><time>08.2020 – 05.2022</time><div><h3>Republic of Korea Air Force</h3><p>Space Weather Researcher · AIA-193 satellite imagery 기반 solar coronal hole computer vision pipeline</p></div></article>
+        <article><time>09.2025 – 현재</time><span class="institution-logo logo-usc" aria-label="University of Southern California 로고">USC</span><div><h3>University of Southern California</h3><p>Graduate Research Assistant · 효율적 LLM 추론과 confidence-aware reasoning framework 개발</p></div></article>
+        <article><time>07.2025 – 현재</time><span class="institution-logo logo-inha" aria-label="Inha University 로고">INHA</span><div><h3>Inha University</h3><p>External Researcher · pruning-robust training regularizer와 대규모 PyTorch 실험</p></div></article>
+        <article><time>09.2023 – 05.2025</time><span class="institution-logo logo-stony" aria-label="Stony Brook University 로고">SBU</span><div><h3>Stony Brook University</h3><p>Undergraduate Research Assistant · unlabeled data를 활용한 tumor prediction uncertainty 연구</p></div></article>
+        <article><time>08.2020 – 05.2022</time><span class="institution-logo logo-air" aria-label="Republic of Korea Air Force 로고">ROK</span><div><h3>Republic of Korea Air Force</h3><p>Space Weather Researcher · AIA-193 satellite imagery 기반 solar coronal hole computer vision pipeline</p></div></article>
       </div>
     </section>
 
     <section id="projects" class="section-shell split-section" aria-labelledby="projects-title">
-      <div class="section-intro"><p class="kicker">Projects & Awards</p><h2 id="projects-title">연구 밖에서도<br>만들고 실험합니다.</h2></div>
+      <div class="section-intro"><p class="kicker">Projects & Awards</p><h2 id="projects-title">연구 밖에서도 만들고 실험합니다.</h2></div>
       <div class="section-body"><p>웹 개발과 데이터 사이언스 해커톤에서 여러 차례 수상했고, CSE 114 Introduction to Object-Oriented Programming과 CSE 216 Programming Abstractions를 가르쳤습니다.</p><div class="award-grid"><span>ICONIP 2025<br><b>Best Paper</b></span><span>ICASSP 2026<br><b>Travel Award</b></span><span>Hackathons<br><b>1st · 2nd · 3rd</b></span></div></div>
     </section>
 
@@ -78,7 +78,7 @@
       <div class="game-layout">
         <div class="game-panel">
           <div class="game-topbar"><div><span class="game-label">SCORE</span><strong id="score">0</strong></div><div><span class="game-label">BEST</span><strong id="high-score">0</strong></div><div class="health-wrap"><span class="game-label">HEALTH</span><div id="health" class="health" aria-label="체력 4칸"></div></div></div>
-          <div class="canvas-wrap"><canvas id="game-canvas" width="720" height="440" aria-label="지렁이 게임 보드"></canvas><div id="game-message" class="game-message"><strong>Ready?</strong><span>시작 버튼을 눌러 지렁이를 움직이세요.</span></div></div>
+          <div class="canvas-wrap"><canvas id="game-canvas" width="720" height="440" tabindex="0" aria-label="지렁이 게임 보드"></canvas><div id="game-message" class="game-message"><strong>Ready?</strong><span>시작 버튼을 눌러 지렁이를 움직이세요.</span></div></div>
           <div class="game-actions"><button id="start-game" class="button button-primary" type="button">시작</button><button id="pause-game" class="button button-ghost" type="button" disabled>일시정지</button><button id="restart-game" class="button button-ghost" type="button">재시작</button></div>
           <div class="touch-controls" aria-label="모바일 게임 조작"><button type="button" data-direction="up" aria-label="위">↑</button><div><button type="button" data-direction="left" aria-label="왼쪽">←</button><button type="button" data-direction="down" aria-label="아래">↓</button><button type="button" data-direction="right" aria-label="오른쪽">→</button></div></div>
         </div>
@@ -86,9 +86,15 @@
       </div>
     </section>
 
+    <section class="plane-game section-shell" aria-labelledby="plane-title">
+      <div class="section-heading"><div><p class="kicker">게임 · 02</p><h2 id="plane-title">궤도 수호자</h2></div><p class="section-note">방향키/WASD로 회피<br>스페이스로 공격</p></div>
+      <div class="plane-layout"><div class="plane-panel"><div class="game-topbar"><div><span class="game-label">점수</span><strong id="plane-score">0</strong></div><div><span class="game-label">보스</span><strong id="plane-boss">접근 중</strong></div><div class="health-wrap"><span class="game-label">체력</span><div id="plane-health" class="health" aria-label="비행기 체력 4칸"></div></div></div><div class="canvas-wrap"><canvas id="plane-canvas" width="720" height="440" tabindex="0" aria-label="비행기 게임 보드"></canvas><div id="plane-message" class="game-message"><strong>궤도 수호자</strong><span>시작 후 스페이스로 적을 공격하세요.</span></div></div><div class="game-actions"><button id="plane-start" class="button button-primary" type="button">시작</button><button id="plane-pause" class="button button-ghost" type="button" disabled>일시정지</button><button id="plane-restart" class="button button-ghost" type="button">재시작</button></div><div class="plane-touch-controls" aria-label="비행기 모바일 게임 조작"><div><button type="button" data-plane-direction="up" aria-label="비행기 위">↑</button></div><div><button type="button" data-plane-direction="left" aria-label="비행기 왼쪽">←</button><button type="button" data-plane-fire aria-label="비행기 발사">✦</button><button type="button" data-plane-direction="right" aria-label="비행기 오른쪽">→</button></div><div><button type="button" data-plane-direction="down" aria-label="비행기 아래">↓</button></div></div></div><aside class="game-guide"><p class="kicker">임무</p><ul><li>우주를 가로지르는 적을 피하고 스페이스 또는 ✦ 버튼으로 공격합니다.</li><li>적을 제거할 때마다 1점, 10점마다 보스가 등장합니다.</li><li>적·탄환에 닿으면 체력이 1칸 줄어들며 0이면 패배합니다.</li><li>보스는 더 크고 강한 탄환 패턴을 사용합니다.</li></ul></aside></div>
+    </section>
+
     <section id="contact" class="section-shell contact-section" aria-labelledby="contact-title"><p class="kicker">Contact & Links</p><h2 id="contact-title">연구를 함께 이야기하고 싶다면</h2><p>공개 프로필과 연구 기록은 아래 링크에서 확인할 수 있습니다.</p><div class="link-row"><a class="button button-primary" href="https://www.linkedin.com/in/yun-cs/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="button button-ghost" href="https://scholar.google.com/citations?user=mlfYKfgAAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a><a class="button button-ghost" href="https://www.worldwidedaniel.com" target="_blank" rel="noreferrer">Research site ↗</a></div></section>
   </main>
   <footer class="site-footer"><span>© 2026 Vincent-Daniel Yun</span><span>Efficient AI Research</span><a href="#home">맨 위로 ↑</a></footer>
   <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
