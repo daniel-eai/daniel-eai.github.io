@@ -1,17 +1,7 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const siteNav = document.querySelector('#site-nav');
+"use strict";
 
-if (menuToggle && siteNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', String(!isOpen));
-    siteNav.classList.toggle('is-open', !isOpen);
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    document.activeElement?.blur();
   });
-
-  siteNav.addEventListener('click', (event) => {
-    if (event.target.matches('a')) {
-      menuToggle.setAttribute('aria-expanded', 'false');
-      siteNav.classList.remove('is-open');
-    }
-  });
-}
+});

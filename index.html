@@ -1,45 +1,53 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A responsive personal profile and research space.">
-    <title>Daniel</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="site-name" href="#home">Daniel</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        Menu
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#research">Research</a>
-        <a href="#games">Games</a>
-      </nav>
-    </header>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vincent-Daniel Yun의 인공지능 연구 포트폴리오">
+  <title>Vincent-Daniel Yun | AI Research</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">Vincent-Daniel Yun</a>
+    <nav aria-label="주요 메뉴">
+      <a href="#home">홈</a>
+      <a href="#research">연구</a>
+      <a href="#publications">논문</a>
+      <a href="#experience">경력</a>
+      <a href="#games">Games</a>
+    </nav>
+  </header>
 
-    <main id="home">
-      <section class="intro" aria-labelledby="intro-title">
-        <p class="eyebrow">Personal research space</p>
-        <h1 id="intro-title">helloworld</h1>
-        <p>A responsive profile site is taking shape.</p>
-      </section>
+  <main>
+    <section id="home" class="hero" aria-labelledby="home-title">
+      <p class="eyebrow">AI Researcher · Efficient Machine Learning</p>
+      <h1 id="home-title">더 가볍고, 빠르고, 효율적인 인공지능을 연구합니다.</h1>
+      <p>University of Southern California 인공지능 석사과정 연구 조교 Vincent-Daniel Yun입니다.</p>
+    </section>
 
-      <section id="research" class="section" aria-labelledby="research-title">
-        <p class="eyebrow">Research</p>
-        <h2 id="research-title">Research and projects</h2>
-        <p>Profile content will be added from the approved materials in a later loop.</p>
-      </section>
+    <section id="research" aria-labelledby="research-title">
+      <h2 id="research-title">연구</h2>
+      <p>LLM 압축과 최적화, 양자화, pruning, 효율적 추론 및 강건한 multi-agent AI를 연구합니다.</p>
+    </section>
 
-      <section id="games" class="section game-placeholder" aria-labelledby="games-title">
-        <p class="eyebrow">Games</p>
-        <h2 id="games-title">Games</h2>
-        <p>The worm game will be added in a later development loop.</p>
-      </section>
-    </main>
+    <section id="publications" aria-labelledby="publications-title">
+      <h2 id="publications-title">논문</h2>
+      <p>연구 논문과 프로젝트를 다음 개발 루프에서 분야별로 정리합니다.</p>
+    </section>
 
-    <script src="script.js" defer></script>
-  </body>
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">경력</h2>
+      <p>USC, Inha University, Stony Brook University 및 대한민국 공군 우주기상팀에서 연구를 수행했습니다.</p>
+    </section>
+
+    <section id="games" class="games-ready" aria-labelledby="games-title">
+      <h2 id="games-title">Games</h2>
+      <p>키보드와 모바일 터치로 조작하는 지렁이 게임 영역입니다.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 Vincent-Daniel Yun</footer>
+  <script src="script.js"></script>
+</body>
 </html>
