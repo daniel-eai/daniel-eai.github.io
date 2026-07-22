@@ -17,7 +17,7 @@
   const over = () => { state = "gameover"; pauseButton.disabled = true; setMessage("패배", "재시작 버튼으로 다시 도전하세요."); };
   const fire = () => { if (state !== "running" || fireClock > 0) return; bullets.push({ x: player.x, y: player.y - 20, vx: 0, vy: -430, r: 4 }); fireClock = 170; };
   const damage = () => { const now = performance.now(); if (now < invulnerableUntil) return; health -= 1; invulnerableUntil = now + 1000; updateHud(); if (health <= 0) over(); };
-  const hit = (a, b) => Math.abs(a.x - b.x) < (a.w + (b.r || b.w || 10)) * .65 && Math.abs(a.y - b.y) < (a.h + (b.r || b.h || 10)) * .65;
+  const hit = (a, b) => { const halfWidth = (item) => item.w ? item.w / 2 : (item.r || 6); const halfHeight = (item) => item.h ? item.h / 2 : (item.r || 6); return Math.abs(a.x - b.x) < halfWidth(a) + halfWidth(b) && Math.abs(a.y - b.y) < halfHeight(a) + halfHeight(b); };
   const spawnEnemy = () => enemies.push({ x: 28 + Math.random() * (W - 56), y: -30, w: 22, h: 22, vx: (Math.random() - .5) * 90, vy: 65 + Math.random() * 55, cooldown: 500 + Math.random() * 900 });
   const spawnBoss = () => { if (!boss && score >= 10) boss = { x: W / 2, y: 70, w: 76, h: 52, hp: 20, vx: 100, cooldown: 350 }; };
   const update = (dt, now) => {
