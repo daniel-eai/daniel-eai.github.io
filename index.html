@@ -3,51 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Vincent-Daniel Yun의 인공지능 연구 포트폴리오">
-  <title>Vincent-Daniel Yun | AI Research</title>
+  <meta name="description" content="Vincent-Daniel Yun의 효율적 인공지능 연구 포트폴리오">
+  <title>Vincent-Daniel Yun | Efficient AI Research</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#home">Vincent-Daniel Yun</a>
-    <nav aria-label="주요 메뉴">
-      <a href="#home">홈</a>
-      <a href="#research">연구</a>
-      <a href="#publications">논문</a>
-      <a href="#experience">경력</a>
-      <a href="#games">Games</a>
+    <a class="brand" href="#home" aria-label="Vincent-Daniel Yun 홈">
+      <span class="brand-mark">VDY</span><span>Vincent-Daniel Yun</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">메뉴</button>
+    <nav id="site-nav" aria-label="주요 메뉴">
+      <a href="#about">소개</a><a href="#research">연구</a><a href="#publications">논문</a>
+      <a href="#experience">경력</a><a href="#projects">프로젝트</a><a href="#contact">Contact</a><a href="#games">Games</a>
     </nav>
   </header>
 
   <main>
-    <section id="home" class="hero" aria-labelledby="home-title">
-      <p class="eyebrow">AI Researcher · Efficient Machine Learning</p>
-      <h1 id="home-title">더 가볍고, 빠르고, 효율적인 인공지능을 연구합니다.</h1>
-      <p>University of Southern California 인공지능 석사과정 연구 조교 Vincent-Daniel Yun입니다.</p>
+    <section id="home" class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">Efficient AI · LLM Optimization · Research</p>
+        <h1 id="hero-title">더 가볍고,<br><em>빠르고 효율적인</em><br>인공지능을 연구합니다.</h1>
+        <p class="hero-lede">Vincent-Daniel Yun은 USC 인공지능 석사과정 연구 조교로, 모델 압축과 최적화를 통해 학습과 추론의 새로운 효율을 탐구합니다.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#research">연구 살펴보기</a><a class="text-link" href="#games">게임 플레이 →</a></div>
+      </div>
+      <div class="research-orbit" aria-label="연구 분야를 표현한 추상 이미지" role="img">
+        <span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="orbit-core">AI</span>
+        <span class="orbit-label label-top">LLM</span><span class="orbit-label label-right">OPT</span><span class="orbit-label label-bottom">EFFICIENT</span>
+      </div>
     </section>
 
-    <section id="research" aria-labelledby="research-title">
-      <h2 id="research-title">연구</h2>
-      <p>LLM 압축과 최적화, 양자화, pruning, 효율적 추론 및 강건한 multi-agent AI를 연구합니다.</p>
+    <section id="about" class="section-shell split-section" aria-labelledby="about-title">
+      <div class="section-intro"><p class="kicker">About</p><h2 id="about-title">연구를 더 작게,<br>더 강하게.</h2></div>
+      <div class="section-body"><p>현대의 신경망은 강력하지만, 과도한 매개변수와 계산 비용을 동반합니다. 저는 모델이 가진 중복성을 이해하고, 구조적으로 더 작고 계산적으로 더 효율적인 시스템으로 바꾸는 방법을 연구합니다.</p><p>현재 USC FoRT-ML Group에서 Sai Praneeth Karimireddy 교수와 Vatsal Sharan 교수의 지도를 받으며 연구하고 있습니다. 서울대학교 CMAL 방문 연구원, 인하대학교 Large-Scale Machine Learning Systems Lab 협력 연구원으로도 활동하고 있습니다.</p><div class="fact-row"><span>USC M.S. AI</span><span>Efficient ML</span><span>LLM Compression</span></div></div>
     </section>
 
-    <section id="publications" aria-labelledby="publications-title">
-      <h2 id="publications-title">논문</h2>
-      <p>연구 논문과 프로젝트를 다음 개발 루프에서 분야별로 정리합니다.</p>
+    <section id="research" class="section-shell" aria-labelledby="research-title">
+      <div class="section-heading"><div><p class="kicker">Research</p><h2 id="research-title">지금 탐구하는 것</h2></div><p class="section-note">모델을 가볍게 만들면서도<br>능력과 신뢰성을 지키는 방법</p></div>
+      <div class="research-grid">
+        <article class="research-card"><div class="visual visual-pruning"><span>▰ ▱ ▰</span><span>▰ ▰ ▱</span><span>▱ ▰ ▰</span></div><p class="card-index">01</p><h3>Model Compression</h3><p>pruning, quantization, low-rank fine-tuning으로 LLM의 중복성을 줄이고 높은 희소성에서도 성능을 보존합니다.</p></article>
+        <article class="research-card"><div class="visual visual-reasoning"><span class="pulse p1"></span><span class="pulse p2"></span><span class="pulse p3"></span></div><p class="card-index">02</p><h3>Efficient Reasoning</h3><p>token-level probability statistics로 질문 난이도를 판단하고, 필요한 계산만 선택하는 효율적 추론을 연구합니다.</p></article>
+        <article class="research-card"><div class="visual visual-agents"><span>↗</span><span>↘</span><span>↙</span><span>↖</span></div><p class="card-index">03</p><h3>Robust Multi-Agent AI</h3><p>불완전하고 적대적인 환경에서도 협력하는 multi-agent LLM 시스템의 강건성과 효율을 탐구합니다.</p></article>
+      </div>
     </section>
 
-    <section id="experience" aria-labelledby="experience-title">
-      <h2 id="experience-title">경력</h2>
-      <p>USC, Inha University, Stony Brook University 및 대한민국 공군 우주기상팀에서 연구를 수행했습니다.</p>
+    <section id="publications" class="section-shell" aria-labelledby="publications-title">
+      <div class="section-heading"><div><p class="kicker">Selected Publications</p><h2 id="publications-title">연구 기록</h2></div><p class="section-note">논문 제목은 원문 영어로<br>연구 흐름은 한국어로</p></div>
+      <div class="publication-list">
+        <article class="publication featured"><span class="pub-year">2026 · ICASSP</span><h3>Sharpness-Aware Minimization with Z-Score Gradient Filtering for Neural Networks</h3><p>Vincent-Daniel Yun · Main Conference</p></article>
+        <article class="publication"><span class="pub-year">2025 · ICONIP · Best Award</span><h3>Revisiting 16-bit Neural Network Training: A Practical Approach for Resource-Limited Learning</h3><p>J. Yun, S. Choi, F. Rameau, B. Kang, Z. Fu</p></article>
+        <article class="publication"><span class="pub-year">2025 · NCAA · Journal</span><h3>Stochastic Gradient Sampling for Enhancing Neural Networks Training</h3><p>J. Yun · Neural Computing and Applications</p></article>
+        <article class="publication"><span class="pub-year">2024 · IJCNN · Oral</span><h3>Robust Neural Pruning with Gradient Sampling Optimization for Residual Neural Networks</h3><p>J. Yun · Main Conference</p></article>
+        <details class="publication-more"><summary>Under Review / Workshop 논문 더 보기</summary><div class="more-list"><h3>Locality-Aware Redundancy Pruning for LLM Depth Compression</h3><h3>Ghosted Layers: Unconstrained Activation Alignment for Recovering Layer-Pruned LLMs</h3><h3>Weight Concentration Regularization for Improving Pruning Robustness Under High Sparsity</h3><h3>Robust Multi-Agent LLMs under Byzantine Faults</h3><h3>Rethinking Layer Redundancy in Large Language Models: Calibration Objectives and Search for Depth Pruning</h3><h3>Asynchronous Sharpness-Aware Minimization for Fast and Accurate Deep Learning</h3><h3>Singular Energy-Aware Layer-wise Rank Allocation for Accurate Low-Rank Fine-Tuning</h3><h3>Spectrum-Shaping Regularization for Neural Network Training Robust to Low-Rank Pruning</h3><h3>Why Does Stochastic Gradient Descent Slow Down in Low-Precision Training?</h3><h3>Hyperparameter-Free Auto-Scaled Gradient Normalization via Global Standard Deviation Dynamics</h3></div></details>
+      </div>
     </section>
 
-    <section id="games" class="games-ready" aria-labelledby="games-title">
-      <h2 id="games-title">Games</h2>
-      <p>키보드와 모바일 터치로 조작하는 지렁이 게임 영역입니다.</p>
+    <section id="experience" class="section-shell" aria-labelledby="experience-title">
+      <div class="section-heading"><div><p class="kicker">Experience</p><h2 id="experience-title">걸어온 경로</h2></div></div>
+      <div class="timeline">
+        <article><time>09.2025 – 현재</time><div><h3>University of Southern California</h3><p>Graduate Research Assistant · 효율적 LLM 추론과 confidence-aware reasoning framework 개발</p></div></article>
+        <article><time>07.2025 – 현재</time><div><h3>Inha University</h3><p>External Researcher · pruning-robust training regularizer와 대규모 PyTorch 실험</p></div></article>
+        <article><time>09.2023 – 05.2025</time><div><h3>Stony Brook University</h3><p>Undergraduate Research Assistant · unlabeled data를 활용한 tumor prediction uncertainty 연구</p></div></article>
+        <article><time>08.2020 – 05.2022</time><div><h3>Republic of Korea Air Force</h3><p>Space Weather Researcher · AIA-193 satellite imagery 기반 solar coronal hole computer vision pipeline</p></div></article>
+      </div>
     </section>
+
+    <section id="projects" class="section-shell split-section" aria-labelledby="projects-title">
+      <div class="section-intro"><p class="kicker">Projects & Awards</p><h2 id="projects-title">연구 밖에서도<br>만들고 실험합니다.</h2></div>
+      <div class="section-body"><p>웹 개발과 데이터 사이언스 해커톤에서 여러 차례 수상했고, CSE 114 Introduction to Object-Oriented Programming과 CSE 216 Programming Abstractions를 가르쳤습니다.</p><div class="award-grid"><span>ICONIP 2025<br><b>Best Paper</b></span><span>ICASSP 2026<br><b>Travel Award</b></span><span>Hackathons<br><b>1st · 2nd · 3rd</b></span></div></div>
+    </section>
+
+    <section id="games" class="section-shell games-section" aria-labelledby="games-title">
+      <div class="section-heading"><div><p class="kicker">Games</p><h2 id="games-title">Worm / signal runner</h2></div><p class="section-note">방향키 · WASD · 모바일 버튼<br>연구 사이 잠깐의 휴식</p></div>
+      <div class="game-layout">
+        <div class="game-panel">
+          <div class="game-topbar"><div><span class="game-label">SCORE</span><strong id="score">0</strong></div><div><span class="game-label">BEST</span><strong id="high-score">0</strong></div><div class="health-wrap"><span class="game-label">HEALTH</span><div id="health" class="health" aria-label="체력 4칸"></div></div></div>
+          <div class="canvas-wrap"><canvas id="game-canvas" width="720" height="440" aria-label="지렁이 게임 보드"></canvas><div id="game-message" class="game-message"><strong>Ready?</strong><span>시작 버튼을 눌러 지렁이를 움직이세요.</span></div></div>
+          <div class="game-actions"><button id="start-game" class="button button-primary" type="button">시작</button><button id="pause-game" class="button button-ghost" type="button" disabled>일시정지</button><button id="restart-game" class="button button-ghost" type="button">재시작</button></div>
+          <div class="touch-controls" aria-label="모바일 게임 조작"><button type="button" data-direction="up" aria-label="위">↑</button><div><button type="button" data-direction="left" aria-label="왼쪽">←</button><button type="button" data-direction="down" aria-label="아래">↓</button><button type="button" data-direction="right" aria-label="오른쪽">→</button></div></div>
+        </div>
+        <aside class="game-guide"><p class="kicker">How to play</p><ul><li>음식을 먹으면 지렁이가 성장하고 점수가 올라갑니다.</li><li>적은 5개가 움직이며 5초마다 동시에 폭발합니다.</li><li>적과 닿으면 체력이 줄고 1초 동안 무적입니다.</li><li>체력은 4칸이며 0이 되면 패배합니다.</li><li>게임은 방향키, WASD 또는 화면 버튼으로 조작합니다.</li></ul></aside>
+      </div>
+    </section>
+
+    <section id="contact" class="section-shell contact-section" aria-labelledby="contact-title"><p class="kicker">Contact & Links</p><h2 id="contact-title">연구를 함께 이야기하고 싶다면</h2><p>공개 프로필과 연구 기록은 아래 링크에서 확인할 수 있습니다.</p><div class="link-row"><a class="button button-primary" href="https://www.linkedin.com/in/yun-cs/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="button button-ghost" href="https://scholar.google.com/citations?user=mlfYKfgAAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a><a class="button button-ghost" href="https://www.worldwidedaniel.com" target="_blank" rel="noreferrer">Research site ↗</a></div></section>
   </main>
-
-  <footer>© 2026 Vincent-Daniel Yun</footer>
+  <footer class="site-footer"><span>© 2026 Vincent-Daniel Yun</span><span>Efficient AI Research</span><a href="#home">맨 위로 ↑</a></footer>
   <script src="script.js"></script>
 </body>
 </html>
